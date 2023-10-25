@@ -1,0 +1,29 @@
+---
+
+- hosts: all
+  become: true
+  pre_tasks:
+
+  - name: install updates (Ubuntu)
+    apt:
+      upgrade: dist
+      update_cache: yes
+    changed_when: false
+    when: ansible_distribution == "Ubuntu"
+
+  - name: update repository index (CentOS)
+    dnf:
+      update_only: yes
+      update_cache: yes
+    changed_when: false
+    when: ansible_distribution == "CentOS"
+
+- hosts: ubuntu_prome
+  become: true
+  roles:
+    - ubuntu_prome
+
+- hosts: centos_prome
+  become: true
+  roles:
+    - centos_prome

@@ -1,0 +1,13 @@
+
+- name: Installation of Prometheus for CentOS
+  dnf:
+    name:
+      - epel-release
+      - snapd
+    state: latest
+
+- name: Enabling snapd
+  command: systemctl enable --now snapd.socket
+
+- name: Prometheus for CentOS
+  command: snap install prometheus --classic

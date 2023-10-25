@@ -1,0 +1,6 @@
+
+[ubuntu_prome]
+192.168.56.103
+
+[centos_prome]
+192.168.56.105 ansible_python_interpreter=/usr/bin/python2
